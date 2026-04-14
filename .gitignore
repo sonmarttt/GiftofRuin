@@ -1,0 +1,23 @@
+# Essential Unity folders to ignore
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+
+# Ensure Asset meta files are tracked
+!/[Aa]ssets/**/*.meta
+
+# Editor and IDE files
+.vs/
+.gradle/
+*.csproj
+*.sln
+*.user
+*.suo
+
+# Build artifacts
+*.apk
+*.unitypackage

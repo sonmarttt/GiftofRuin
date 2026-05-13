@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "gameprogFinal.sln"
+    "dotnet.defaultSolution": "GiftofRuin.sln"
 }

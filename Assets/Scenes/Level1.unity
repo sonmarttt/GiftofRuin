@@ -473,7 +473,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371143766}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.20719114, y: 3.6157266e-10, z: -7.657632e-11, w: 0.9783005}
+  m_LocalRotation: {x: 0.2071912, y: -0.00000001648968, z: 0.000000003492298, w: 0.97830045}
   m_LocalPosition: {x: -0.2931097, y: 4.3129997, z: -4.795135}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6861,6 +6861,41 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1550525188}
   m_Mesh: {fileID: 6820455575039028463, guid: 4fc1d57b51293c340bd0270885050076, type: 3}
+--- !u!1 &1553143539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2030065513875240620, guid: 807acf91bb047074fb31e9741ac8c4aa, type: 3}
+  m_PrefabInstance: {fileID: 1905095693}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1553143542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553143539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IgnoreTag: Player
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 0
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1001 &1603930991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7753,7 +7788,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2030065513875240620, guid: 807acf91bb047074fb31e9741ac8c4aa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1553143542}
   m_SourcePrefab: {fileID: 100100000, guid: 807acf91bb047074fb31e9741ac8c4aa, type: 3}
 --- !u!1 &1939773960
 GameObject:

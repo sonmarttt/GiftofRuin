@@ -42,21 +42,21 @@ public class PressurePlate : MonoBehaviour
             targetDoor.position = Vector3.MoveTowards(targetDoor.position, doorPos, moveSpeed * Time.deltaTime);
         }
     }
+void OnTriggerEnter(Collider other)
+{
+    if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        isPressed = true;
+}
 
-    void OnTriggerEnter(Collider other)
-    {
-        // aadd an Enemy tag to identify the npcs later
-        if (other.CompareTag("Player") || other.CompareTag("Enemy"))
-        {
-            isPressed = true;
-        }
-    }
+void OnTriggerStay(Collider other)
+{
+    if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        isPressed = true;
+}
 
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player") || other.CompareTag("Enemy") )
-        {
-            isPressed = false;
-        }
-    }
+void OnTriggerExit(Collider other)
+{
+    if (other.CompareTag("Player") || other.CompareTag("Enemy"))
+        isPressed = false;
+}
 }

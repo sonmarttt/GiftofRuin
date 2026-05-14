@@ -19,6 +19,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private float groundCheckDistance = 1.1f;
 
+    [Header("Sounds")]
+    public AudioSource audioSource;
+    public AudioClip jumpSound;
+    public AudioClip walkSound;
+    public AudioClip runSound;
+    public AudioClip hurtSound;
+
+    [Header("Speed Multiplier")]
     public float speedMultiplier = 1.0f;
 
     private Rigidbody rb;
@@ -53,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        audioSource.PlayOneShot(hurtSound);
         healthAmount -= damage;
         healthAmount = Mathf.Clamp(healthAmount, 0, maxHealth);
         UpdateHealthBar();
@@ -140,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jumpRequest && IsGrounded)
         {
+            audioSource.PlayOneShot(jumpSound);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             jumpRequest = false;
         }
@@ -166,5 +176,13 @@ public class PlayerMovement : MonoBehaviour
         );
 
         rb.velocity = newVelocity;
+    }
+
+    public void PlayWalkSound() {
+        audioSource.PlayOneShot(walkSound);
+    }
+
+    public void RunSound() {
+        audioSource.PlayOneShot(runSound);
     }
 }

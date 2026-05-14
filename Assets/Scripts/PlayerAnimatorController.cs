@@ -90,10 +90,8 @@ if (Input.GetMouseButtonDown(0))
 private IEnumerator ActivateHitbox(SwordHitbox hitbox)
 {
     if (hitbox == null) yield break;
-    Debug.Log("Enabling hitbox: " + hitbox.gameObject.name);
-    hitbox.EnableHitbox();
+    hitbox.EnableHitbox(); // now calls DealDamageInRadius() internally
     yield return new WaitForSeconds(0.3f);
-    Debug.Log("Disabling hitbox: " + hitbox.gameObject.name);
     hitbox.DisableHitbox();
 }
 

@@ -187,4 +187,10 @@ public class PlayerMovement : MonoBehaviour
     public void RunSound() {
         audioSource.PlayOneShot(runSound);
     }
+
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Lava")) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -88,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Player died");
         this.enabled = false;
         rb.velocity = Vector3.zero;
+         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void InitializeComponents()

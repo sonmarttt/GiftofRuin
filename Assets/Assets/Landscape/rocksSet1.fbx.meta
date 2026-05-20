@@ -3,7 +3,22 @@ guid: 192d61422fbae874c94b62a7ff360fbd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Rocks1Color
+    second: {fileID: 2800000, guid: ddc32f1e0fc44734a8ceaf2781c1d365, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Rocks1Normal
+    second: {fileID: 2800000, guid: d81678382fc12014b82efe9d3b16bc06, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Rocks1Specular
+    second: {fileID: 2800000, guid: 8fc35ed2ca498324db37d65943650f77, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

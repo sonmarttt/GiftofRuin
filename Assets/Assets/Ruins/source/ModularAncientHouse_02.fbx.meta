@@ -3,7 +3,17 @@ guid: 82a86d0924837f74e9280ec95bc8ec07
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BlocksArches
+    second: {fileID: 2100000, guid: 5bed99ac86692fa479d216a556a12b2b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StoneWall
+    second: {fileID: 2100000, guid: 2722cdc079b552a469429f421dcbf6ee, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

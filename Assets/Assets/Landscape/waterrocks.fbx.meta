@@ -3,7 +3,22 @@ guid: 4fc1d57b51293c340bd0270885050076
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cliffs
+    second: {fileID: 2100000, guid: be683bc31832cc743aa6d08f87947b86, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pilars
+    second: {fileID: 2100000, guid: e77daeec107bc8144af7674dd338966f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: rockterrain
+    second: {fileID: 2100000, guid: 528915e18b1c2884987ff260c6bb2f35, type: 2}
   materials:
     materialImportMode: 2
     materialName: 2

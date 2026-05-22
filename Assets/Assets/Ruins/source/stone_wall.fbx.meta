@@ -3,7 +3,17 @@ guid: ef069d66f883e3a44aa59443c6bc1917
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone_wall_low
+    second: {fileID: 2100000, guid: 1d5cf46ded2aaaa47aee4cb202a25768, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: stone_wall_low.001
+    second: {fileID: 2100000, guid: 28bed798b6cd0f440be1e894bc42c035, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

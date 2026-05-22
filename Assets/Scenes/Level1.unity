@@ -527,7 +527,7 @@ PrefabInstance:
     - target: {fileID: -1342566976901234874, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 76a825a5ff28a234fb877af7f36c2a6d, type: 2}
+      objectReference: {fileID: 2100000, guid: afda6e16b84eacd4682518fa3aeb7920, type: 2}
     - target: {fileID: 919132149155446097, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Name
       value: torch (2)
@@ -1832,7 +1832,7 @@ PrefabInstance:
     - target: {fileID: -1342566976901234874, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 76a825a5ff28a234fb877af7f36c2a6d, type: 2}
+      objectReference: {fileID: 2100000, guid: afda6e16b84eacd4682518fa3aeb7920, type: 2}
     - target: {fileID: 919132149155446097, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Name
       value: torch (3)
@@ -2715,7 +2715,7 @@ PrefabInstance:
     - target: {fileID: -1342566976901234874, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 76a825a5ff28a234fb877af7f36c2a6d, type: 2}
+      objectReference: {fileID: 2100000, guid: afda6e16b84eacd4682518fa3aeb7920, type: 2}
     - target: {fileID: 919132149155446097, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Name
       value: torch (1)
@@ -7158,7 +7158,7 @@ PrefabInstance:
     - target: {fileID: -1342566976901234874, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 76a825a5ff28a234fb877af7f36c2a6d, type: 2}
+      objectReference: {fileID: 2100000, guid: afda6e16b84eacd4682518fa3aeb7920, type: 2}
     - target: {fileID: 919132149155446097, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Name
       value: torch
@@ -7703,7 +7703,7 @@ PrefabInstance:
     - target: {fileID: -1342566976901234874, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 76a825a5ff28a234fb877af7f36c2a6d, type: 2}
+      objectReference: {fileID: 2100000, guid: afda6e16b84eacd4682518fa3aeb7920, type: 2}
     - target: {fileID: 919132149155446097, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Name
       value: torch (5)
@@ -7877,7 +7877,7 @@ PrefabInstance:
     - target: {fileID: -1342566976901234874, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 76a825a5ff28a234fb877af7f36c2a6d, type: 2}
+      objectReference: {fileID: 2100000, guid: afda6e16b84eacd4682518fa3aeb7920, type: 2}
     - target: {fileID: 919132149155446097, guid: 775935264b9bc9e42be63a0dcbcd8027, type: 3}
       propertyPath: m_Name
       value: torch (4)

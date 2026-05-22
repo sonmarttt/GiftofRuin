@@ -2371,7 +2371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cc5b96b464e7e94db5b3b13333750e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1724979308017142713}
   attackRange: 2
   attackCooldown: 1.5
   attackDamage: 10
@@ -8461,6 +8461,20 @@ MonoBehaviour:
   grabLayer:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1467348030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1467348014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a24eb0bbfb4b8d43bcbc1d9c89255a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightSwordHitbox: {fileID: 1263733679}
+  leftSwordHitbox: {fileID: 528477919}
 --- !u!1 &1550525188
 GameObject:
   m_ObjectHideFlags: 0
@@ -10979,10 +10993,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7675026695891641047, guid: 1a0248f3c51dc3d4d9adb86374eed18e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1467348028}
+    - targetCorrespondingSourceObject: {fileID: 7675026695891641047, guid: 1a0248f3c51dc3d4d9adb86374eed18e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1467348030}
   m_SourcePrefab: {fileID: 100100000, guid: 1a0248f3c51dc3d4d9adb86374eed18e, type: 3}
 --- !u!4 &1724979308017142712 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 41945986317017471, guid: 1a0248f3c51dc3d4d9adb86374eed18e, type: 3}
+  m_PrefabInstance: {fileID: 1724979308017142711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1724979308017142713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7046159454981765229, guid: 1a0248f3c51dc3d4d9adb86374eed18e, type: 3}
   m_PrefabInstance: {fileID: 1724979308017142711}
   m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807

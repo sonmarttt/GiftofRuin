@@ -17,8 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed = 10f;
 
     [Header("Jump Settings")]
-    [SerializeField] private float jumpForce = 5f;
+    [SerializeField] private float jumpForce = 6f;
     [SerializeField] private float groundCheckDistance = 1.1f;
+    [SerializeField] private int maxJumps = 2;
 
     [Header("Sounds")]
     public AudioSource audioSource;
@@ -30,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Speed Multiplier")]
     public float speedMultiplier = 1.0f;
 
+    [HideInInspector] public bool isAttacking = false;
+
     private Rigidbody rb;
     private Transform cameraTransform;
 
@@ -37,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveZ;
     private bool jumpRequest;
     private Vector3 moveDirection;
+    private int jumpsRemaining;
 
     [Header("Anim values")]
     public float groundSpeed;
@@ -58,6 +62,9 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         HandleMovement();
+
+        if (rb.velocity.y < 0)
+            rb.velocity += Vector3.up * Physics.gravity.y * 2f * Time.fixedDeltaTime;
     }
 
     public void TakeDamage(int damage)
@@ -89,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Player died");
         this.enabled = false;
         rb.velocity = Vector3.zero;
-         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void InitializeComponents()
@@ -110,6 +117,8 @@ public class PlayerMovement : MonoBehaviour
             healthBar.maxValue = 1;
             healthBar.value = 1;
         }
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void RegisterInput()
@@ -149,10 +158,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleJump()
     {
-        if (jumpRequest && IsGrounded)
+        if (IsGrounded && rb.velocity.y <= 0)
+            jumpsRemaining = maxJumps;
+
+        if (jumpRequest && jumpsRemaining > 0)
         {
             audioSource.PlayOneShot(jumpSound);
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            jumpsRemaining--;
+            jumpRequest = false;
+        }
+        else
+        {
             jumpRequest = false;
         }
     }
@@ -171,26 +189,30 @@ public class PlayerMovement : MonoBehaviour
         float speed = IsRunning ? baseRunSpeed : baseWalkSpeed;
         groundSpeed = (moveDirection != Vector3.zero) ? speed : 0.0f;
 
+        float yVelocity = (IsGrounded && isAttacking) ? 0f : rb.velocity.y;
+
         Vector3 newVelocity = new Vector3(
             moveDirection.x * speed * speedMultiplier,
-            rb.velocity.y,
+            yVelocity,
             moveDirection.z * speed * speedMultiplier
         );
 
         rb.velocity = newVelocity;
     }
 
-    public void PlayWalkSound() {
+    public void PlayWalkSound()
+    {
         audioSource.PlayOneShot(walkSound);
     }
 
-    public void RunSound() {
+    public void RunSound()
+    {
         audioSource.PlayOneShot(runSound);
     }
 
-    private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Lava")) {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Lava"))
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
     }
 }

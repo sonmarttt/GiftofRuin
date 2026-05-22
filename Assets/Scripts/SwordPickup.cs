@@ -5,9 +5,9 @@ public class SwordPickup : MonoBehaviour
     [Header("Ground Swords (visible on ground)")]
     public GameObject groundSwords;
 
-    [Header("Equipped Swords (parented to hands)")]
-    public GameObject sword1; // Sword7_FBX
-    public GameObject sword2; // Sword3_FBX
+    [Header("Weapon Manager")]
+    public WeaponManager weaponManager;
+    public int weaponIndex; // 0 = dual swords, 1 = single sword
 
     public float pickupRange = 2f;
     public KeyCode pickupKey = KeyCode.E;
@@ -20,8 +20,6 @@ public class SwordPickup : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         if (groundSwords != null) groundSwords.SetActive(false);
-        if (sword1 != null) sword1.SetActive(false);
-        if (sword2 != null) sword2.SetActive(false);
     }
 
     void Update()
@@ -45,8 +43,9 @@ public class SwordPickup : MonoBehaviour
     {
         pickedUp = true;
         if (groundSwords != null) groundSwords.SetActive(false);
-        if (sword1 != null) sword1.SetActive(true);
-        if (sword2 != null) sword2.SetActive(true);
+
+        if (weaponManager != null)
+            weaponManager.UnlockWeapon(weaponIndex);
     }
 
     void OnGUI()
@@ -57,8 +56,8 @@ public class SwordPickup : MonoBehaviour
             style.fontSize = 20;
             style.normal.textColor = Color.white;
             style.alignment = TextAnchor.MiddleCenter;
-            GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 50, 200, 30),
-                "[E] Pick up Dual Swords", style);
+            GUI.Label(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 50, 300, 30),
+                "[E] Pick up " + (weaponIndex == 0 ? "Dual Swords" : "Sword"), style);
         }
     }
 }

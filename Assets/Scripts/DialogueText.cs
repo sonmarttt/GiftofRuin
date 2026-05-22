@@ -20,9 +20,11 @@ public class NPCDialogue : MonoBehaviour
     public GameObject trainingDummy;
     public int dummyRevealLine = 6;
 
-    [Header("Swords")]
-    public SwordPickup swordPickup;
-    public int swordRevealLine = 7;
+    [Header("Weapons")]
+    public SwordPickup dualSwordsPickup;
+    public int dualSwordsRevealLine = 7;
+    public SwordPickup singleSwordPickup;
+    public int singleSwordRevealLine = 8;
 
     [Header("Camera")]
     public CinemachineFreeLook freeLookCamera;
@@ -75,28 +77,27 @@ public class NPCDialogue : MonoBehaviour
         StartCoroutine(TypeLine(lines[currentLine]));
     }
 
-void NextLine()
-{
-    currentLine++;
-    Debug.Log("Current line: " + currentLine + " | SwordRevealLine: " + swordRevealLine);
-
-    if (currentLine >= lines.Length)
+    void NextLine()
     {
-        CloseDialogue();
-        return;
+        currentLine++;
+
+        if (currentLine >= lines.Length)
+        {
+            CloseDialogue();
+            return;
+        }
+
+        if (currentLine == dummyRevealLine && trainingDummy != null)
+            trainingDummy.SetActive(true);
+
+        if (currentLine == dualSwordsRevealLine && dualSwordsPickup != null)
+            dualSwordsPickup.RevealOnGround();
+
+        if (currentLine == singleSwordRevealLine && singleSwordPickup != null)
+            singleSwordPickup.RevealOnGround();
+
+        StartCoroutine(TypeLine(lines[currentLine]));
     }
-
-    if (currentLine == dummyRevealLine && trainingDummy != null)
-        trainingDummy.SetActive(true);
-
-    if (currentLine == swordRevealLine && swordPickup != null)
-    {
-        Debug.Log("Revealing swords!");
-        swordPickup.RevealOnGround();
-    }
-
-    StartCoroutine(TypeLine(lines[currentLine]));
-}
 
     void CloseDialogue()
     {
@@ -135,5 +136,22 @@ void NextLine()
 
         if (playerMovement != null)
             playerMovement.enabled = !locked;
+    }
+
+    void OnGUI()
+    {
+        if (!isOpen && player != null)
+        {
+            float dist = Vector3.Distance(transform.position, player.position);
+            if (dist <= interactRange)
+            {
+                GUIStyle style = new GUIStyle();
+                style.fontSize = 20;
+                style.normal.textColor = Color.white;
+                style.alignment = TextAnchor.MiddleCenter;
+                GUI.Label(new Rect(Screen.width / 2 - 150, Screen.height / 2 + 50, 300, 30),
+                    "[R] Talk", style);
+            }
+        }
     }
 }

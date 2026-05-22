@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 775935264b9bc9e42be63a0dcbcd8027
+guid: aad7afbe79306d942a29cf6d6381028d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Mat
-    second: {fileID: 2100000, guid: afda6e16b84eacd4682518fa3aeb7920, type: 2}
+      name: Mat_Grass
+    second: {fileID: 2100000, guid: 85082395a7c8ac548a84e39838f8d5b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Light
+    second: {fileID: 2100000, guid: d1c218b27c5603b4483bd32bf9fd92ae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Stone
+    second: {fileID: 2100000, guid: 962c6f2dc889f0e44878c43876b45999, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Mat_Sword
+    second: {fileID: 2100000, guid: 5dfc65d13c9ecdc4083119a0372e975c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

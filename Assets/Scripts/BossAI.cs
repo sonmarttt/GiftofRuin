@@ -70,11 +70,12 @@ public class BossAI : MonoBehaviour
             SetState(BossState.Flying);
 
             // do 1-2 attacks then land
-            int attackCount = Random.Range(1, 3);
+           // do 2-4 attacks then land
+            int attackCount = Random.Range(2, 5);
             for (int i = 0; i < attackCount; i++)
             {
-                // fly around before each attack
-                float flyTime = Random.Range(3f, 6f);
+                // shorter fly time between attacks
+                float flyTime = Random.Range(1.5f, 3f);
                 float elapsed = 0f;
 
                 while (elapsed < flyTime)
@@ -185,6 +186,8 @@ public class BossAI : MonoBehaviour
         switch (newState)
         {
             case BossState.Idle:
+                // don't set isFlying — let the default Idle animation play
+                break;
             case BossState.Flying:
                 animator.SetBool("isFlying", true);
                 break;

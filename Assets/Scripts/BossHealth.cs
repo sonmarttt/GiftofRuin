@@ -16,6 +16,7 @@ public class BossHealth : MonoBehaviour
 
     private BossAI bossAI;
     private Animator animator;
+    public bool IsDead => isDead;
     private bool isDead = false;
 
     void Start()
@@ -32,7 +33,7 @@ public class BossHealth : MonoBehaviour
         }
 
         if (bossNameText != null)
-            bossNameText.text = "Fallen Angel";
+            bossNameText.text = "Malachar -The Fallen Seraph";
     }
 
     public void TakeDamage(float damage)

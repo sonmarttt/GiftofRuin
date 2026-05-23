@@ -1,0 +1,50 @@
+[33mcommit e8e4cabe6527c4e4dc5adea8b2d0abf16dadee3e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mA-branch[m[33m, [m[1;31morigin/A-branch[m[33m)[m
+Author: sonmarttt <143427384+sonmarttt@users.noreply.github.com>
+Date:   Fri May 22 18:31:52 2026 -0400
+
+    changes (not done) + fix merge conflict hopefully
+
+ Assets/Assets/Materials/CircularWalls.mat          |  83 [32m+++++++++++++[m
+ Assets/Assets/Materials/CircularWalls.mat.meta     |   8 [32m++[m
+ Assets/Assets/Materials/CircularWalls3.mat         |  83 [32m+++++++++++++[m
+ Assets/Assets/Materials/CircularWalls3.mat.meta    |   8 [32m++[m
+ Assets/Assets/Materials/CircularWalls4.mat         |  83 [32m+++++++++++++[m
+ Assets/Assets/Materials/CircularWalls4.mat.meta    |   8 [32m++[m
+ Assets/Assets/Materials/CiruclarWalls2.001.mat     |  83 [32m+++++++++++++[m
+ .../Assets/Materials/CiruclarWalls2.001.mat.meta   |   8 [32m++[m
+ Assets/Assets/Materials/CiruclarWalls2.mat         |  83 [32m+++++++++++++[m
+ Assets/Assets/Materials/CiruclarWalls2.mat.meta    |   8 [32m++[m
+ Assets/Assets/Materials/circular_floor.mat         |  83 [32m+++++++++++++[m
+ Assets/Assets/Materials/circular_floor.mat.meta    |   8 [32m++[m
+ Assets/Assets/Materials/face1.mat                  |  83 [32m+++++++++++++[m
+ Assets/Assets/Materials/face1.mat.meta             |   8 [32m++[m
+ Assets/Assets/Materials/les1.mat                   |  83 [32m+++++++++++++[m
+ Assets/Assets/Materials/les1.mat.meta              |   8 [32m++[m
+ Assets/Assets/Ruins/source/Plane_600.fbx           | Bin [31m0[m -> [32m17235952[m bytes
+ Assets/Assets/Ruins/source/Plane_600.fbx.meta      | 109 [32m+++++++++++++++++[m
+ Assets/Assets/Ruins/source/SM_CircularWalls1.fbx   | Bin [31m0[m -> [32m47127372[m bytes
+ .../Assets/Ruins/source/SM_CircularWalls1.fbx.meta | 134 [32m+++++++++++++++++++++[m
+ Assets/Assets/Ruins/source/lestnica.fbx            | Bin [31m0[m -> [32m34864[m bytes
+ Assets/Assets/Ruins/source/lestnica.fbx.meta       | 119 [32m++++++++++++++++++[m
+ .../Assets/textures/CircularWalls3_1001_albedo.jpg | Bin [31m0[m -> [32m3229430[m bytes
+ .../textures/CircularWalls3_1001_albedo.jpg.meta   | 114 [32m++++++++++++++++++[m
+ .../Assets/textures/CircularWalls4_1001_albedo.jpg | Bin [31m0[m -> [32m3503144[m bytes
+ .../textures/CircularWalls4_1001_albedo.jpg.meta   | 114 [32m++++++++++++++++++[m
+ .../Assets/textures/CircularWalls_1001_albedo.jpg  | Bin [31m0[m -> [32m3871486[m bytes
+ .../textures/CircularWalls_1001_albedo.jpg.meta    | 114 [32m++++++++++++++++++[m
+ .../textures/Circular_Floor_kalyson_Basecolor.jpeg | Bin [31m0[m -> [32m1677884[m bytes
+ .../Circular_Floor_kalyson_Basecolor.jpeg.meta     | 114 [32m++++++++++++++++++[m
+ .../textures/CiruclarWalls2_001_1001_albedo.jpg    | Bin [31m0[m -> [32m4229223[m bytes
+ .../CiruclarWalls2_001_1001_albedo.jpg.meta        | 114 [32m++++++++++++++++++[m
+ .../Assets/textures/CiruclarWalls2_1001_albedo.jpg | Bin [31m0[m -> [32m4168473[m bytes
+ .../textures/CiruclarWalls2_1001_albedo.jpg.meta   | 114 [32m++++++++++++++++++[m
+ Assets/Assets/textures/face_ao.tga.png             | Bin [31m0[m -> [32m12696944[m bytes
+ Assets/Assets/textures/face_ao.tga.png.meta        | 114 [32m++++++++++++++++++[m
+ Assets/Assets/textures/lest_ao.tga.png             | Bin [31m0[m -> [32m6346965[m bytes
+ Assets/Assets/textures/lest_ao.tga.png.meta        | 114 [32m++++++++++++++++++[m
+ Assets/New Terrain 1.asset                         | Bin [31m0[m -> [32m1958960[m bytes
+ Assets/New Terrain 1.asset.meta                    |   8 [32m++[m
+ Assets/Scenes/Level2.unity                         |   1 [31m-[m
+ ProjectSettings/GraphicsSettings.asset             |  17 [32m+[m[31m--[m
+ .../Packages/com.unity.probuilder/Settings.json    |  14 [32m++[m[31m-[m
+ 43 files changed, 2032 insertions(+), 10 deletions(-)

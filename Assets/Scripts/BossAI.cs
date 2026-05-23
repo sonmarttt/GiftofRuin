@@ -3,53 +3,38 @@ using UnityEngine;
 
 public class BossAI : MonoBehaviour
 {
-    [Header("Positions")]
-    private Vector3 floatPosition;
-    private Vector3 landPosition;
-
     [Header("Settings")]
-    public float moveSpeed = 3f;
     public float chaseSpeed = 5f;
-    public float attackRange = 5f;
     public float landDuration = 5f;
-    public float minAirTime = 8f;
-    public float maxAirTime = 14f;
+    public float hoverHeight = 5f;
+    public float hoverDistance = 8f;
 
     [Header("Projectile")]
     public GameObject spellProjectilePrefab;
     public Transform spellSpawnPoint;
-    public float projectileSpeed = 8f;
 
     [Header("AOE")]
     public float aoeDamage = 20f;
     public float aoeRadius = 5f;
+    public GameObject aoePrefab;
 
-    // events for animator controller to listen to
     public static event System.Action OnSpellStart;
     public static event System.Action OnAOEStart;
 
     private Animator animator;
     private Transform player;
     private BossState currentState;
+    private bool isLanded = false;
 
-    private enum BossState
-    {
-        Idle,
-        Flying,
-        AOEAttack,
-        SpellProjectile,
-        Landed
-    }
+    private enum BossState { Idle, Flying, AOEAttack, SpellProjectile, Landed }
 
     void Start()
     {
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
-        floatPosition = new Vector3(1.002f, 8.63f, 0.04f);
-        transform.position = floatPosition;
+        transform.position = new Vector3(transform.position.x, hoverHeight, transform.position.z);
 
-        // listen for animation sync events
         BossAnimatorController.SpellFireEvent += FireProjectile;
         BossAnimatorController.AOEHitEvent += DealAOEDamage;
 
@@ -81,28 +66,41 @@ public class BossAI : MonoBehaviour
 
         while (true)
         {
+            isLanded = false;
             SetState(BossState.Flying);
-            float airTime = Random.Range(minAirTime, maxAirTime);
-            float elapsed = 0f;
 
-            while (elapsed < airTime)
+            // do 1-2 attacks then land
+            int attackCount = Random.Range(1, 3);
+            for (int i = 0; i < attackCount; i++)
             {
-                elapsed += Time.deltaTime;
+                // fly around before each attack
+                float flyTime = Random.Range(3f, 6f);
+                float elapsed = 0f;
 
-                Vector3 targetPos = new Vector3(player.position.x, floatPosition.y, player.position.z);
-                transform.position = Vector3.MoveTowards(transform.position, targetPos, chaseSpeed * Time.deltaTime);
-
-                if (elapsed > 2f && Random.value < 0.005f)
+                while (elapsed < flyTime)
                 {
-                    if (Random.Range(0, 2) == 0)
-                        yield return StartCoroutine(DoAOEAttack());
-                    else
-                        yield return StartCoroutine(DoSpellProjectile());
+                    elapsed += Time.deltaTime;
+
+                    Vector3 dirToPlayer = (transform.position - player.position).normalized;
+                    dirToPlayer.y = 0;
+                    if (dirToPlayer == Vector3.zero) dirToPlayer = Vector3.forward;
+                    Vector3 targetPos = player.position + dirToPlayer * hoverDistance;
+                    targetPos.y = hoverHeight;
+                    transform.position = Vector3.MoveTowards(transform.position, targetPos, chaseSpeed * Time.deltaTime);
+
+                    yield return null;
                 }
 
-                yield return null;
+                // execute attack
+                if (Random.Range(0, 2) == 0)
+                    yield return StartCoroutine(DoAOEAttack());
+                else
+                    yield return StartCoroutine(DoSpellProjectile());
+
+                SetState(BossState.Flying);
             }
 
+            // land after attacks done
             yield return StartCoroutine(Land());
             yield return StartCoroutine(GoToFloat());
         }
@@ -111,64 +109,45 @@ public class BossAI : MonoBehaviour
     IEnumerator DoAOEAttack()
     {
         SetState(BossState.AOEAttack);
-
-        Vector3 hoverPos = new Vector3(transform.position.x, floatPosition.y, transform.position.z);
-        transform.position = hoverPos;
-
-        // fire event so animator controller starts timing
+        transform.position = new Vector3(transform.position.x, hoverHeight, transform.position.z);
         OnAOEStart?.Invoke();
-
-        // wait full animation length
         yield return new WaitForSeconds(2.167f);
-
-        SetState(BossState.Flying);
     }
 
     IEnumerator DoSpellProjectile()
     {
         SetState(BossState.SpellProjectile);
-
-        Vector3 hoverPos = new Vector3(transform.position.x, floatPosition.y, transform.position.z);
-        transform.position = hoverPos;
-
-        // fire event so animator controller starts timing
+        transform.position = new Vector3(transform.position.x, hoverHeight, transform.position.z);
         OnSpellStart?.Invoke();
-
-        // wait full animation length
         yield return new WaitForSeconds(2.300f);
-
-        SetState(BossState.Flying);
     }
 
     void FireProjectile()
     {
         if (spellProjectilePrefab == null || spellSpawnPoint == null) return;
-
         GameObject proj = Instantiate(spellProjectilePrefab, spellSpawnPoint.position, Quaternion.identity);
-        Vector3 targetPos = new Vector3(player.position.x, player.position.y, player.position.z);
-        Vector3 dir = (targetPos - spellSpawnPoint.position).normalized;
-
+        Vector3 dir = (player.position - spellSpawnPoint.position).normalized;
         BossProjectile bp = proj.GetComponent<BossProjectile>();
         if (bp != null) bp.SetDirection(dir);
     }
 
     void DealAOEDamage()
     {
-        float dist = Vector3.Distance(transform.position, player.position);
-        if (dist <= aoeRadius)
-        {
-            PlayerMovement pm = player.GetComponent<PlayerMovement>();
-            if (pm != null) pm.TakeDamage((int)aoeDamage);
-        }
+        if (aoePrefab != null)
+            Instantiate(aoePrefab, new Vector3(player.position.x, player.position.y, player.position.z), Quaternion.identity);
     }
 
     IEnumerator Land()
     {
+        Debug.Log("Boss landing");
+        isLanded = true;
         SetState(BossState.Landed);
 
         float t = 0f;
         Vector3 startPos = transform.position;
-        Vector3 endPos = new Vector3(transform.position.x, 3.27f, transform.position.z);
+        Vector3 endPos = new Vector3(transform.position.x, -1f, transform.position.z);
+
+        Debug.Log("Landing from Y: " + startPos.y + " to Y: " + endPos.y);
 
         while (t < 1f)
         {
@@ -178,6 +157,7 @@ public class BossAI : MonoBehaviour
         }
 
         yield return new WaitForSeconds(landDuration);
+        isLanded = false;
     }
 
     IEnumerator GoToFloat()
@@ -186,11 +166,12 @@ public class BossAI : MonoBehaviour
 
         float t = 0f;
         Vector3 startPos = transform.position;
+        Vector3 endPos = new Vector3(transform.position.x, hoverHeight, transform.position.z);
 
         while (t < 1f)
         {
             t += Time.deltaTime * 1.5f;
-            transform.position = Vector3.Lerp(startPos, floatPosition, t);
+            transform.position = Vector3.Lerp(startPos, endPos, t);
             yield return null;
         }
     }
@@ -198,25 +179,20 @@ public class BossAI : MonoBehaviour
     void SetState(BossState newState)
     {
         currentState = newState;
-
         animator.SetBool("isFlying", false);
-        animator.SetBool("isAOE", false);
-        animator.SetBool("isSpell", false);
         animator.SetBool("isLanded", false);
 
         switch (newState)
         {
             case BossState.Idle:
-                animator.SetBool("isFlying", true); // fly during idle too
-                break;
             case BossState.Flying:
                 animator.SetBool("isFlying", true);
                 break;
             case BossState.AOEAttack:
-                animator.SetBool("isAOE", true);
+                animator.SetTrigger("isAOE");
                 break;
             case BossState.SpellProjectile:
-                animator.SetBool("isSpell", true);
+                animator.SetTrigger("isSpell");
                 break;
             case BossState.Landed:
                 animator.SetBool("isLanded", true);
@@ -224,5 +200,5 @@ public class BossAI : MonoBehaviour
         }
     }
 
-    public bool IsLanded() => currentState == BossState.Landed;
+    public bool IsLanded() => isLanded;
 }

@@ -8,7 +8,7 @@ public class BossAnimatorController : MonoBehaviour
     private const float SPELL_LENGTH = 2.300f;
 
     // Fire projectile at 40% through the spell animation
-   private const float SPELL_FIRE_POINT = 0.345f;
+   private const float SPELL_FIRE_POINT = 0.357f;
 
     // AOE damage lands at 60% through the AOE animation
     private const float AOE_HIT_POINT = 0.6f;

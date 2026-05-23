@@ -1254,8 +1254,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a390d79907b82824c8fe66de69847c4b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 154111281}
   m_SourcePrefab: {fileID: 100100000, guid: a390d79907b82824c8fe66de69847c4b, type: 3}
+--- !u!1 &154111280 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a390d79907b82824c8fe66de69847c4b, type: 3}
+  m_PrefabInstance: {fileID: 154111279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &154111281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154111280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb9c470a739e6342bc6b1c6f170a2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &163308854 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 14732329742c03a47ad428e6f43331af, type: 3}
@@ -13836,6 +13856,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 614cca99ef4b7ce40b0600f366149022, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 6f9e219ab701cba4f8696fc06cf9effb, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: -8700617353114198275, guid: 6f9e219ab701cba4f8696fc06cf9effb, type: 3}
@@ -14416,17 +14440,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69d1f61b0d84d3d44a8c6a4bf2ebc8bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
   chaseSpeed: 5
-  attackRange: 5
   landDuration: 5
-  minAirTime: 8
-  maxAirTime: 14
+  hoverHeight: 5
+  hoverDistance: 8
   spellProjectilePrefab: {fileID: 9200442414378341790, guid: 45735f7caed1a1c44982c7ac6420fc4b, type: 3}
   spellSpawnPoint: {fileID: 208471643}
-  projectileSpeed: 8
   aoeDamage: 20
   aoeRadius: 5
+  aoePrefab: {fileID: 8539666677469807279, guid: 813f725b26b992d4abff0115eaf1a39a, type: 3}
 --- !u!114 &1532927454
 MonoBehaviour:
   m_ObjectHideFlags: 0

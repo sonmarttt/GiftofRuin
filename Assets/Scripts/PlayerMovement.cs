@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float baseWalkSpeed = 5f;
     [SerializeField] private float baseRunSpeed = 8f;
     [SerializeField] private float rotationSpeed = 10f;
+    [SerializeField] private Transform respawnPosition;
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce = 6f;
@@ -212,7 +213,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Lava"))
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        if (other.CompareTag("Lava")) {
+            transform.position = respawnPosition.position;
+            TakeDamage(10);
+        }
     }
 }

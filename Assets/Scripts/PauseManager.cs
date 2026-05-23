@@ -12,7 +12,9 @@ public class PauseManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        pauseMenuPanel.SetActive(false);
+        Time.timeScale = 1f;
+        isPaused = false;
     }
 
     // Update is called once per frame
@@ -28,6 +30,8 @@ public class PauseManager : MonoBehaviour
     }
 
     public void PauseGame() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         pauseMenuPanel.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
@@ -53,5 +57,10 @@ public class PauseManager : MonoBehaviour
         Time.timeScale = 1f;
         isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void Controls() {
+        SceneHistory.LastSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("ControlScene");
     }
 }

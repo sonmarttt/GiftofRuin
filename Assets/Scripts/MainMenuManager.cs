@@ -8,6 +8,11 @@ public class MainMenuManager : MonoBehaviour
         SceneManager.LoadScene(sceneName);
     }
 
+    public void Controls() {
+        SceneHistory.LastSceneName = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("ControlScene");
+    }
+
     public void QuitGame()
     {
         Application.Quit();

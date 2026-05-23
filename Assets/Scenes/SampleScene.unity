@@ -4291,6 +4291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6739a501b07bf704d9468c5208d4ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 25
 --- !u!1001 &311016827
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5158,6 +5159,7 @@ GameObject:
   - component: {fileID: 400891192}
   - component: {fileID: 400891191}
   - component: {fileID: 400891190}
+  - component: {fileID: 400891193}
   m_Layer: 0
   m_Name: stone_pillar_01 (1)
   m_TagString: Untagged
@@ -5251,6 +5253,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 400891188}
   m_Mesh: {fileID: -2160281398415866746, guid: 03c8fd6035bdf384093c0636d1f61855, type: 3}
+--- !u!114 &400891193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400891188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eb9c470a739e6342bc6b1c6f170a2bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &406815651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5973,6 +5987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6739a501b07bf704d9468c5208d4ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 25
 --- !u!136 &463809359
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -7587,6 +7602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6739a501b07bf704d9468c5208d4ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 25
 --- !u!136 &593342720
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -8620,6 +8636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6739a501b07bf704d9468c5208d4ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 25
 --- !u!136 &661207534
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -10199,6 +10216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6739a501b07bf704d9468c5208d4ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 25
 --- !u!54 &791151352
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18885,6 +18903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6739a501b07bf704d9468c5208d4ac63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 25
 --- !u!136 &1533024326
 CapsuleCollider:
   m_ObjectHideFlags: 0

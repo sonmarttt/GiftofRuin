@@ -1,5 +1,7 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class NPCHealth : MonoBehaviour
 {
@@ -51,5 +53,14 @@ public class NPCHealth : MonoBehaviour
         GetComponent<NPCAnimator>().enabled = false;
         GetComponent<GrabbableCorpse>().Die();          // then this
         this.enabled = false;
+
+        if (SceneManager.GetActiveScene().name == "SampleScene") {
+            StartCoroutine(ExecuteAfterTime(3f));
+        }
+    }
+
+    IEnumerator ExecuteAfterTime(float time) {
+        yield return new WaitForSeconds(time);
+        SceneManager.LoadScene("Level1");
     }
 }
